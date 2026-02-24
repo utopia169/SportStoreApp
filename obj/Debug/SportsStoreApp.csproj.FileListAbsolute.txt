@@ -1,0 +1,36 @@
+Z:\VisualStudio\MyProject\SportsStoreApp\obj\Debug\SportsStoreApp.csproj.AssemblyReference.cache
+Z:\VisualStudio\MyProject\SportsStoreApp\obj\Debug\MainWindow.g.cs
+Z:\VisualStudio\MyProject\SportsStoreApp\obj\Debug\App.g.cs
+Z:\VisualStudio\MyProject\SportsStoreApp\obj\Debug\SportsStoreApp_MarkupCompile.cache
+Z:\VisualStudio\MyProject\SportsStoreApp\obj\Debug\SportsStoreApp_MarkupCompile.lref
+Z:\VisualStudio\MyProject\SportsStoreApp\bin\Debug\SportsStoreApp.exe.config
+Z:\VisualStudio\MyProject\SportsStoreApp\bin\Debug\SportsStoreApp.exe
+Z:\VisualStudio\MyProject\SportsStoreApp\bin\Debug\SportsStoreApp.pdb
+Z:\VisualStudio\MyProject\SportsStoreApp\obj\Debug\MainWindow.baml
+Z:\VisualStudio\MyProject\SportsStoreApp\obj\Debug\SportsStoreApp.g.resources
+Z:\VisualStudio\MyProject\SportsStoreApp\obj\Debug\SportsStoreApp.Properties.Resources.resources
+Z:\VisualStudio\MyProject\SportsStoreApp\obj\Debug\SportsStoreApp.csproj.GenerateResource.cache
+Z:\VisualStudio\MyProject\SportsStoreApp\obj\Debug\SportsStoreApp.csproj.CoreCompileInputs.cache
+Z:\VisualStudio\MyProject\SportsStoreApp\obj\Debug\SportsStoreApp.exe
+Z:\VisualStudio\MyProject\SportsStoreApp\obj\Debug\SportsStoreApp.pdb
+Z:\VisualStudio\MyProject\SportsStoreApp\obj\Debug\SportsStoreApp.exe.config
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\SportsStoreApp.csproj.AssemblyReference.cache
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\LoginForm.g.cs
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\MainWindow.g.cs
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\App.g.cs
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\SportsStoreApp_MarkupCompile.cache
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\SportsStoreApp_MarkupCompile.lref
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\SportsStoreApp.exe
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\SportsStoreApp.pdb
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\bin\Debug\SportsStoreApp.exe.config
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\bin\Debug\SportsStoreApp.exe
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\bin\Debug\SportsStoreApp.pdb
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\MainWindow.baml
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\LoginForm.baml
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\SportsStoreApp.g.resources
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\SportsStoreApp.Properties.Resources.resources
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\SportsStoreApp.csproj.GenerateResource.cache
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\SportsStoreApp.csproj.CoreCompileInputs.cache
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\Edit.g.cs
+C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\Edit.baml
