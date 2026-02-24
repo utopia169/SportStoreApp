@@ -34,3 +34,24 @@ C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\Sp
 C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\SportsStoreApp.csproj.CoreCompileInputs.cache
 C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\Edit.g.cs
 C:\Users\Student 12\Desktop\Новая папка (8)\SportStoreApp\obj\Debug\Edit.baml
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\bin\Debug\SportsStoreApp.exe.config
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\bin\Debug\SportsStoreApp.exe
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\bin\Debug\SportsStoreApp.pdb
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\obj\Debug\SportsStoreApp.csproj.AssemblyReference.cache
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\obj\Debug\SportsStoreApp.exe.config
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\obj\Debug\Edit.g.cs
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\obj\Debug\LoginForm.g.cs
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\obj\Debug\MainWindow.g.cs
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\obj\Debug\App.g.cs
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\obj\Debug\SportsStoreApp_MarkupCompile.cache
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\obj\Debug\SportsStoreApp_MarkupCompile.lref
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\obj\Debug\Edit.baml
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\obj\Debug\LoginForm.baml
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\obj\Debug\MainWindow.baml
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\obj\Debug\SportsStoreApp.g.resources
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\obj\Debug\SportsStoreApp.Properties.Resources.resources
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\obj\Debug\SportsStoreApp.csproj.GenerateResource.cache
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\obj\Debug\SportsStoreApp.csproj.CoreCompileInputs.cache
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\obj\Debug\SportsStoreApp.exe
+C:\Users\vankr\OneDrive\Desktop\SportStoreApp\SportStoreApp\obj\Debug\SportsStoreApp.pdb
