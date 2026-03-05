@@ -10,14 +10,6 @@ namespace SportsStoreApp
         public MainWindow()
         {
             InitializeComponent();
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
-
-            // Или открыть после загрузки главного окна
-            this.Loaded += (s, e) => {
-                Edit editWindow = new Edit();
-                editWindow.Show();
-            };
         }
 
         private void txtSearch_GotFocus(object sender, RoutedEventArgs e)
