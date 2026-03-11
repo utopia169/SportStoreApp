@@ -1,17 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace SportsStoreApp
 {
     public partial class MainWindow : Window
     {
+        private bbbEntities1 db = new bbbEntities1();
+
+        private Users currentUser;
         public MainWindow()
         {
             InitializeComponent();
+            LoadProducts();
         }
 
+        public MainWindow(Users user) : this()
+
+        {
+            currentUser = user;
+            txtUserInfo.Text = $"{user.LastName} {user.FirstName}";
+        }
+
+        private void LoadProducts()
+        {
+            try
+            {
+                var products = db.Products
+                    .Include("Category")
+                    .Select(p => new
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        Category = p.Category.Name,
+                        Price = p.Price,
+                        Quantity = p.QuantityInStock,
+                        Status = p.QuantityInStock > 0 ? "В наличии" : "Нет в наличии",
+                        AddedDate = p.CreatedDate
+                    })
+                    .ToList();
+                dgProducts.ItemsSource = products;
+                txtTotalItems.Text = products.Count.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка загрузки товаров: {ex.Message}",
+                    "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
         private void txtSearch_GotFocus(object sender, RoutedEventArgs e)
         {
 
@@ -22,53 +62,188 @@ namespace SportsStoreApp
 
         }
 
+        private void dgProducts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            btnEdit_Click(sender, null);
+        }
+
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // Здесь будет логика поиска
+            try 
+            {
+                string searchText = txtSearch.Text.ToLower;
+
+                if (String.IsNullOrWhiteSpace(searchText) || searchText == "Поиск товаров...")
+                {
+                    LoadProducts();
+                    return;
+                }
+
+                var filteredProducts = db.Products
+                    .Include("Category")
+                    .Where(p => p.Name.ToLower().Contains(searchText) ||
+                        p.Category.Name.ToLower().Contains(searchText))
+                    .Select(p => new
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        Categories = p.Category.Name,
+                        Price = p.Price,
+                        Quantity = p.QuantityInStock,
+                        Status = p.QuantityInStock > 0 ? "В наличии" : "Нет в наличии",
+                        AddedDate = p.CreatedDate
+                    })
+
+                .ToList();
+                
+                dgProducts.ItemsSource = filteredProducts;
+                txtTotalItems.Text = filteredProducts.Count.ToString();
+            }
+            catch (Exception ex) 
+            {
+                LoadProducts();
+            }
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            // Здесь будет логика поиска
+            
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-           
+            try
+            {
+                var newProduct = new Product
+                {
+                    Name = "Новый товар",
+                    CategoryId = 1, 
+                    Price = 0,
+                    QuantityInStock = 0,
+                    CreatedDate = DateTime.Now
+                };
+
+                db.Products.Add(newProduct);
+                db.SaveChanges();
+                newProduct.Name = $"Товар {newProduct.Id}";
+                db.SaveChanges();
+                LoadProducts();
+                MessageBox.Show("Товар успешно добавлен", "Информация",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка добавления товара: {ex.Message}",
+                    "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            try 
+            {
+                dynamic selectedProduct = bgProducts.Selecteditem;
+                if (selectedProduct == null)
+                {
+                    MessageBox.Show("Выберите товар для редактирования",
+                        "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                var productId = selectedProduct.Id;
+                var product = db.Products.Find(productId);
+
+                if (product != null)
+                {
+                    //EditProductWindow editWindow = new EditProductWindow(product);
+                    //editWindow.ShowDialog();
+
+                    MessageBox.Show($"Редактирование товара: {product.Name}",
+                        "Редактирование", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    LoadProducts();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка редактирования: {ex.Message}",
+                    "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                dynamic selectedProduct = dgProducts.SelectedItem;
+                if (selectedProduct == null)
+                {
+                    MessageBox.Show("Выберите товар для удаления",
+                        "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                var result = MessageBox.Show("Вы действительно хотите удалить выбранный товар?",
+                    "Подтверждение удаления", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    int productId = selectedProduct.Id;
+                    var product = db.Products.Find(productId);
 
+                    if (product != null)
+                    {
+                        db.Products.Remove(product);
+                        db.SaveChanges();
+                        LoadProducts();
+
+                        MessageBox.Show("Товар был успешно удален", "Информация",
+                            MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show($"Ошибка удаления: {ex.Message}",
+                    "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
+            var result = MessageBox.Show("Вы действительно хотите выйти из системы?",
+                "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
+            if (result == MessageBoxResult.Yes) 
+            {
+                LoginForm loginWindow = new LoginForm();
+                loginWindow.Show();
+
+                this.Close();
+            }
         }
 
         private void dgProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Здесь будет логика при выборе товара
+
         }
 
+        private void btnPage1_Click(object sender, RoutedEventArgs e)
+        {
+            LoadProducts();
+        }
         private void btnPrevPage_Click(object sender, RoutedEventArgs e)
         {
-            // Здесь будет логика переключения страниц
+
         }
 
         private void btnNextPage_Click(object sender, RoutedEventArgs e)
         {
-            // Здесь будет логика переключения страниц
+
         }
 
-        private void btnPage_Click(object sender, RoutedEventArgs e)
+        protected override void OnClosed(EventArgs e)
         {
-            // Здесь будет логика переключения страниц
+            db?.Dispose();
+            base.OnClosed(e);
         }
     }
 }

@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\vankr\\OneDrive\\Desktop\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\SportStoreApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1D9DB156-9607-46E4-8444-9726EF7586A7}|SportsStoreApp.csproj|c:\\users\\vankr\\onedrive\\desktop\\\u043D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\sportstoreapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D9DB156-9607-46E4-8444-9726EF7586A7}|SportsStoreApp.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1D9DB156-9607-46E4-8444-9726EF7586A7}|SportsStoreApp.csproj|c:\\users\\vankr\\onedrive\\desktop\\\u043D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\sportstoreapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{1D9DB156-9607-46E4-8444-9726EF7586A7}|SportsStoreApp.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1D9DB156-9607-46E4-8444-9726EF7586A7}|SportsStoreApp.csproj|C:\\Users\\vankr\\OneDrive\\Desktop\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\SportStoreApp\\edit.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{1D9DB156-9607-46E4-8444-9726EF7586A7}|SportsStoreApp.csproj|c:\\users\\vankr\\onedrive\\desktop\\\u043D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\sportstoreapp\\edit.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{1D9DB156-9607-46E4-8444-9726EF7586A7}|SportsStoreApp.csproj|solutionrelative:edit.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
@@ -17,6 +21,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{1D9DB156-9607-46E4-8444-9726EF7586A7}|SportsStoreApp.csproj|C:\\Users\\vankr\\OneDrive\\Desktop\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\SportStoreApp\\loginform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{1D9DB156-9607-46E4-8444-9726EF7586A7}|SportsStoreApp.csproj|solutionrelative:loginform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D9DB156-9607-46E4-8444-9726EF7586A7}|SportsStoreApp.csproj|c:\\users\\vankr\\onedrive\\desktop\\\u043D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\sportstoreapp\\loginform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D9DB156-9607-46E4-8444-9726EF7586A7}|SportsStoreApp.csproj|solutionrelative:loginform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,11 +34,49 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Edit.xaml",
+              "DocumentMoniker": "C:\\Users\\vankr\\OneDrive\\Desktop\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\SportStoreApp\\Edit.xaml",
+              "RelativeDocumentMoniker": "Edit.xaml",
+              "ToolTip": "C:\\Users\\vankr\\OneDrive\\Desktop\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\SportStoreApp\\Edit.xaml",
+              "RelativeToolTip": "Edit.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-11T15:32:52.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoginForm.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vankr\\OneDrive\\Desktop\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\SportStoreApp\\LoginForm.xaml.cs",
+              "RelativeDocumentMoniker": "LoginForm.xaml.cs",
+              "ToolTip": "C:\\Users\\vankr\\OneDrive\\Desktop\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\SportStoreApp\\LoginForm.xaml.cs",
+              "RelativeToolTip": "LoginForm.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T15:28:27.563Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vankr\\OneDrive\\Desktop\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\SportStoreApp\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\vankr\\OneDrive\\Desktop\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\SportStoreApp\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAzwPQAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T15:26:22.835Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\vankr\\OneDrive\\Desktop\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\SportStoreApp\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
@@ -42,18 +88,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "LoginForm.xaml",
               "DocumentMoniker": "C:\\Users\\vankr\\OneDrive\\Desktop\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\SportStoreApp\\LoginForm.xaml",
               "RelativeDocumentMoniker": "LoginForm.xaml",
               "ToolTip": "C:\\Users\\vankr\\OneDrive\\Desktop\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\SportStoreApp\\LoginForm.xaml",
               "RelativeToolTip": "LoginForm.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-05T06:51:57.49Z"
+              "WhenOpened": "2026-03-05T06:51:57.49Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Edit.xaml.cs",
               "DocumentMoniker": "C:\\Users\\vankr\\OneDrive\\Desktop\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\SportStoreApp\\Edit.xaml.cs",
               "RelativeDocumentMoniker": "Edit.xaml.cs",
@@ -61,18 +108,8 @@
               "RelativeToolTip": "Edit.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T06:51:50.416Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Edit.xaml",
-              "DocumentMoniker": "C:\\Users\\vankr\\OneDrive\\Desktop\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\SportStoreApp\\Edit.xaml",
-              "RelativeDocumentMoniker": "Edit.xaml",
-              "ToolTip": "C:\\Users\\vankr\\OneDrive\\Desktop\\\u041D\u043E\u0432\u0430\u044F \u043F\u0430\u043F\u043A\u0430\\SportStoreApp\\Edit.xaml",
-              "RelativeToolTip": "Edit.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-05T06:42:09.186Z"
+              "WhenOpened": "2026-03-05T06:51:50.416Z",
+              "EditorCaption": ""
             }
           ]
         }
