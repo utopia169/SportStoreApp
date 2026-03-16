@@ -80,3 +80,28 @@ C:\Users\vankr\OneDrive\Desktop\Новая папка\SportStoreApp\obj\Debug\Sp
 C:\Users\vankr\OneDrive\Desktop\Новая папка\SportStoreApp\bin\Debug\EntityFramework.dll
 C:\Users\vankr\OneDrive\Desktop\Новая папка\SportStoreApp\bin\Debug\EntityFramework.xml
 C:\Users\vankr\OneDrive\Desktop\Новая папка\SportStoreApp\obj\Debug\SportsSt.63B4F81D.Up2Date
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\SportsStoreApp.csproj.AssemblyReference.cache
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\SportsStoreApp.exe.config
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\Edit.g.cs
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\LoginForm.g.cs
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\MainWindow.g.cs
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\App.g.cs
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\SportsStoreApp_Content.g.cs
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\SportsStoreApp_MarkupCompile.cache
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\SportsStoreApp_MarkupCompile.lref
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\SportsStoreApp.exe
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\SportsStoreApp.pdb
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\bin\Debug\SportsStoreApp.exe.config
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\bin\Debug\SportsStoreApp.exe
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\bin\Debug\SportsStoreApp.pdb
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\bin\Debug\EntityFramework.dll
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\bin\Debug\EntityFramework.xml
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\Edit.baml
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\LoginForm.baml
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\MainWindow.baml
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\SportsStoreApp.g.resources
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\SportsStoreApp.Properties.Resources.resources
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\SportsStoreApp.csproj.GenerateResource.cache
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\SportsStoreApp.csproj.CoreCompileInputs.cache
+C:\Users\vankr\OneDrive\Desktop\Новая папка (2)\SportStoreApp\obj\Debug\SportsSt.63B4F81D.Up2Date

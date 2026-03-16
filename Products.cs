@@ -30,5 +30,6 @@ namespace SportsStoreApp
         public string Material { get; set; }
     
         public virtual Categories Categories { get; set; }
+        public DateTime CreatedDate { get; internal set; }
     }
 }

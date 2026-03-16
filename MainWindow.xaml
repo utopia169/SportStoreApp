@@ -348,7 +348,7 @@
                                     Foreground="White"
                                     BorderThickness="0"
                                     Cursor="Hand"
-                                    Click="btnPage_Click">
+                                    Click="btnPage1_Click">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
                                         <Border Background="{TemplateBinding Background}"
@@ -369,7 +369,7 @@
                                     BorderBrush="#DDD"
                                     BorderThickness="1"
                                     Cursor="Hand"
-                                    Click="btnPage_Click">
+                                    Click="btnPage2_Click">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
                                         <Border Background="{TemplateBinding Background}"
@@ -392,7 +392,7 @@
                                     BorderBrush="#DDD"
                                     BorderThickness="1"
                                     Cursor="Hand"
-                                    Click="btnPage_Click">
+                                    Click="btnPage3_Click">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
                                         <Border Background="{TemplateBinding Background}"

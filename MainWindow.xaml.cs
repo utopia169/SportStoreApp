@@ -22,7 +22,7 @@ namespace SportsStoreApp
 
         {
             currentUser = user;
-            txtUserInfo.Text = $"{user.LastName} {user.FirstName}";
+            //txtUserInfo.Text = $"{user.LastName} {user.FirstName}";
         }
 
         private void LoadProducts()
@@ -35,11 +35,11 @@ namespace SportsStoreApp
                     {
                         Id = p.Id,
                         Name = p.Name,
-                        Category = p.Category.Name,
+                        Category = p.Categories,
                         Price = p.Price,
-                        Quantity = p.QuantityInStock,
-                        Status = p.QuantityInStock > 0 ? "В наличии" : "Нет в наличии",
-                        AddedDate = p.CreatedDate
+                        Quantity = p.Quantity,
+                        Status = p.Quantity > 0 ? "В наличии" : "Нет в наличии",
+                        AddedDate = p.AddedDate
                     })
                     .ToList();
                 dgProducts.ItemsSource = products;
@@ -71,7 +71,7 @@ namespace SportsStoreApp
         {
             try 
             {
-                string searchText = txtSearch.Text.ToLower;
+                string searchText = txtSearch.Text.ToLower();
 
                 if (String.IsNullOrWhiteSpace(searchText) || searchText == "Поиск товаров...")
                 {
@@ -82,22 +82,22 @@ namespace SportsStoreApp
                 var filteredProducts = db.Products
                     .Include("Category")
                     .Where(p => p.Name.ToLower().Contains(searchText) ||
-                        p.Category.Name.ToLower().Contains(searchText))
+                        p.Categories.Name.ToLower().Contains(searchText))
                     .Select(p => new
                     {
                         Id = p.Id,
                         Name = p.Name,
-                        Categories = p.Category.Name,
+                        Categories = p.CategoryId,
                         Price = p.Price,
-                        Quantity = p.QuantityInStock,
-                        Status = p.QuantityInStock > 0 ? "В наличии" : "Нет в наличии",
-                        AddedDate = p.CreatedDate
+                        Quantity = p.Quantity,
+                        Status = p.Quantity > 0 ? "В наличии" : "Нет в наличии",
+                        AddedDate = p.AddedDate
                     })
 
                 .ToList();
                 
-                dgProducts.ItemsSource = filteredProducts;
-                txtTotalItems.Text = filteredProducts.Count.ToString();
+                //dgProducts.ItemsSource = filteredProducts;
+                //txtTotalItems.Text = filteredProducts.Count.ToString();
             }
             catch (Exception ex) 
             {
@@ -114,12 +114,12 @@ namespace SportsStoreApp
         {
             try
             {
-                var newProduct = new Product
+                var newProduct = new Products
                 {
                     Name = "Новый товар",
                     CategoryId = 1, 
                     Price = 0,
-                    QuantityInStock = 0,
+                    Quantity = 0,
                     CreatedDate = DateTime.Now
                 };
 
@@ -142,7 +142,7 @@ namespace SportsStoreApp
         {
             try 
             {
-                dynamic selectedProduct = bgProducts.Selecteditem;
+                dynamic selectedProduct = db.Products;
                 if (selectedProduct == null)
                 {
                     MessageBox.Show("Выберите товар для редактирования",
@@ -227,6 +227,14 @@ namespace SportsStoreApp
         }
 
         private void btnPage1_Click(object sender, RoutedEventArgs e)
+        {
+            LoadProducts();
+        }
+        private void btnPage2_Click(object sender, RoutedEventArgs e)
+        {
+            LoadProducts();
+        }
+        private void btnPage3_Click(object sender, RoutedEventArgs e)
         {
             LoadProducts();
         }
