@@ -4,7 +4,7 @@ namespace SportsStoreApp
 {
     public partial class Edit : Window
     {
-        public Edit()
+        public Edit(dynamic products)
         {
             InitializeComponent();
         }

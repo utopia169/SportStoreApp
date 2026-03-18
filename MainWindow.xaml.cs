@@ -12,6 +12,8 @@ namespace SportsStoreApp
         private bbbEntities1 db = new bbbEntities1();
 
         private Users currentUser;
+        private bool isLoaded;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -35,7 +37,7 @@ namespace SportsStoreApp
                     {
                         Id = p.Id,
                         Name = p.Name,
-                        Category = p.Categories,
+                        Category = p.Categories.Name,
                         Price = p.Price,
                         Quantity = p.Quantity,
                         Status = p.Quantity > 0 ? "В наличии" : "Нет в наличии",
@@ -52,21 +54,7 @@ namespace SportsStoreApp
             }
 
         }
-        private void txtSearch_GotFocus(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void txtSearch_LostFocus(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void dgProducts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            btnEdit_Click(sender, null);
-        }
-
+ 
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             try 
@@ -80,60 +68,96 @@ namespace SportsStoreApp
                 }
 
                 var filteredProducts = db.Products
-                    .Include("Category")
+                    .Include("Categories")
+                    .ToList()
                     .Where(p => p.Name.ToLower().Contains(searchText) ||
-                        p.Categories.Name.ToLower().Contains(searchText))
+                                p.Categories.Name.ToLower().Contains(searchText))
                     .Select(p => new
                     {
                         Id = p.Id,
                         Name = p.Name,
-                        Categories = p.CategoryId,
+                        Category = p.Categories.Name,
                         Price = p.Price,
                         Quantity = p.Quantity,
                         Status = p.Quantity > 0 ? "В наличии" : "Нет в наличии",
                         AddedDate = p.AddedDate
                     })
-
-                .ToList();
-                
-                //dgProducts.ItemsSource = filteredProducts;
-                //txtTotalItems.Text = filteredProducts.Count.ToString();
+                    .ToList();
+                if (!isLoaded) return;
+                dgProducts.ItemsSource = filteredProducts;
+                txtTotalItems.Text = filteredProducts.Count.ToString();
             }
-            catch (Exception ex) 
+            catch (Exception)
             {
                 LoadProducts();
             }
-        }
-
-        private void btnSearch_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                // Проверяем категории
+                if (!db.Categories.Any())
+                {
+                    MessageBox.Show("В базе нет ни одной категории! Сначала добавьте категорию.",
+                        "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                var firstCategory = db.Categories.First();
+
+                int nextId = db.Products.Any() ? db.Products.Max(p => p.Id) + 1 : 1;
+
                 var newProduct = new Products
                 {
-                    Name = "Новый товар",
-                    CategoryId = 1, 
+                    Name = $"Товар {nextId}",
+                    CategoryId = firstCategory.Id,
                     Price = 0,
                     Quantity = 0,
-                    CreatedDate = DateTime.Now
+                    StatusId = 1,
+                    AddedDate = DateTime.Now
                 };
 
                 db.Products.Add(newProduct);
                 db.SaveChanges();
-                newProduct.Name = $"Товар {newProduct.Id}";
-                db.SaveChanges();
+
                 LoadProducts();
                 MessageBox.Show("Товар успешно добавлен", "Информация",
                     MessageBoxButton.OK, MessageBoxImage.Information);
             }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                // Ошибка валидации Entity Framework
+                string errors = "";
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        errors += $"Поле: {validationError.PropertyName}, Ошибка: {validationError.ErrorMessage}\n";
+                    }
+                }
+                MessageBox.Show($"Ошибка валидации:\n{errors}", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                // Ошибка обновления БД - смотрим внутреннее исключение
+                string errorMessage = ex.Message;
+                if (ex.InnerException != null)
+                {
+                    errorMessage += $"\n\nВнутреннее исключение: {ex.InnerException.Message}";
+                    if (ex.InnerException.InnerException != null)
+                    {
+                        errorMessage += $"\n\nГлубокое исключение: {ex.InnerException.InnerException.Message}";
+                    }
+                }
+                MessageBox.Show($"Ошибка БД:\n{errorMessage}", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка добавления товара: {ex.Message}",
+                MessageBox.Show($"Общая ошибка: {ex.Message}\n\nСтек: {ex.StackTrace}",
                     "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -142,7 +166,7 @@ namespace SportsStoreApp
         {
             try 
             {
-                dynamic selectedProduct = db.Products;
+                var selectedProduct = dgProducts.SelectedItem as dynamic;
                 if (selectedProduct == null)
                 {
                     MessageBox.Show("Выберите товар для редактирования",
@@ -151,14 +175,14 @@ namespace SportsStoreApp
                 }
 
                 var productId = selectedProduct.Id;
-                var product = db.Products.Find(productId);
+                var products = db.Products.Find(productId);
 
-                if (product != null)
+                if (products != null)
                 {
-                    //EditProductWindow editWindow = new EditProductWindow(product);
-                    //editWindow.ShowDialog();
+                    Edit editWindow = new Edit(products);
+                    editWindow.ShowDialog();
 
-                    MessageBox.Show($"Редактирование товара: {product.Name}",
+                    MessageBox.Show($"Редактирование товара: {products.Name}",
                         "Редактирование", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     LoadProducts();
@@ -246,6 +270,24 @@ namespace SportsStoreApp
         private void btnNextPage_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void txtSearch_GotFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txtSearch_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void dgProducts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            btnEdit_Click(sender, null);
         }
 
         protected override void OnClosed(EventArgs e)

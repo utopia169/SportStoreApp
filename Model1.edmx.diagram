@@ -4,11 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="76a70621c1de4124abccdcfe48d8bcc9" Name="Diagram1">
-        <EntityTypeShape EntityType="bbbModel.Categories" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="bbbModel.Products" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="bbbModel.Users" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="79fee92c663145b583e96544efbe39f8" Name="Diagram1">
+        <EntityTypeShape EntityType="bbbModel.Categories" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bbbModel.Products" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bbbModel.ProductStatus" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bbbModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bbbModel.Users" Width="1.5" PointX="5.75" PointY="5.125" IsExpanded="true" />
         <AssociationConnector Association="bbbModel.FK_Products_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="bbbModel.FK_Products_Status" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

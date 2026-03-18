@@ -27,6 +27,8 @@ namespace SportsStoreApp
     
         public DbSet<Categories> Categories { get; set; }
         public DbSet<Products> Products { get; set; }
+        public DbSet<ProductStatus> ProductStatus { get; set; }
+        public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<Users> Users { get; set; }
     }
 }

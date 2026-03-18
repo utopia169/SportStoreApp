@@ -12,15 +12,16 @@ namespace SportsStoreApp
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class ProductStatus
     {
+        public ProductStatus()
+        {
+            this.Products = new HashSet<Products>();
+        }
+    
         public int Id { get; set; }
-        public string Email { get; set; }
-        public string PasswordHash { get; set; }
-        public string Role { get; set; }
-        public System.DateTime CreatedAt { get; set; }
-        public Nullable<System.DateTime> LastLogin { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Name { get; set; }
+    
+        public virtual ICollection<Products> Products { get; set; }
     }
 }
