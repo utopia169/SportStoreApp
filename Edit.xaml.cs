@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -7,7 +8,7 @@ namespace SportsStoreApp
 {
     public partial class Edit : Window
     {
-        private bbbEntities1 db = new bbbEntities1();
+        private fixxEntities db = new fixxEntities();
         private Products currentProduct;
         private bool isEditMode = false;
         public string WindowTitle { get; set; }
@@ -38,19 +39,22 @@ namespace SportsStoreApp
             LoadCategories();
         }
 
-        public Edit(Products products) : this()
+        public Edit(Products products)
         {
+            InitializeComponent();
             isEditMode = true;
             WindowTitle = "Редактирование товара";
             currentProduct = products;
+            LoadCategories();
             LoadProductData();
         }
+
         private void LoadCategories()
         {
             try
             {
                 var categories = db.Categories.ToList();
-                cmbCategory.Items.Clear();
+                cmbCategory = new ComboBox();
                 foreach (var category in categories)
                 {
                     cmbCategory.Items.Add(category.Name);
@@ -61,12 +65,12 @@ namespace SportsStoreApp
                 }
             }
             catch (Exception ex)
+
             {
                 MessageBox.Show($"Ошибка загрузки категорий: {ex.Message}",
                     "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void LoadProductData()
         {
             if (currentProduct == null) return;
@@ -178,7 +182,7 @@ namespace SportsStoreApp
             CancelButton_Click(sender, e);
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private void SaveButton_Click(object sender, RoutedEventArgs e) 
         {
             try
             {
@@ -197,16 +201,6 @@ namespace SportsStoreApp
                 string color = txtColor.Text.Trim();
                 string material = txtMaterial.Text.Trim();
                 var category = db.Categories.FirstOrDefault(c => c.Name == categoryName);
-                if (category == null)
-                {
-                    category = new Categories
-                    {
-                        Name = categoryName,
-                        Description = null
-                    };
-                    db.Categories.Add(category);
-                    db.SaveChanges();
-                }
                 if (isEditMode && currentProduct != null)
                 {
                     currentProduct.Name = productName;
@@ -221,7 +215,6 @@ namespace SportsStoreApp
                     currentProduct.Size = size;
                     currentProduct.Color = color;
                     currentProduct.Material = material;
-                    db.SaveChanges();
                     MessageBox.Show("Товар успешно обновлен", "Успех",
                         MessageBoxButton.OK, MessageBoxImage.Information);
                 }

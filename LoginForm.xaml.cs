@@ -7,7 +7,7 @@ namespace SportsStoreApp
 {
     public partial class LoginForm : Window
     {
-        private bbbEntities1 db = new bbbEntities1();
+        private fixxEntities db = new fixxEntities();
 
         public LoginForm()
         {

@@ -20,7 +20,5 @@ namespace SportsStoreApp
         public string Role { get; set; }
         public System.DateTime CreatedAt { get; set; }
         public Nullable<System.DateTime> LastLogin { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
     }
 }

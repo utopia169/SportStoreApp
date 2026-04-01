@@ -1,76 +1,80 @@
-create database bbb
-use bbb
-
-
+-- Создаем таблицу Users
 CREATE TABLE Users (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Email NVARCHAR(255) NOT NULL UNIQUE,
     PasswordHash NVARCHAR(255) NOT NULL,
     Role NVARCHAR(50) NOT NULL DEFAULT 'User',
     CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
-    LastLogin DATETIME NULL,
-    FirstName NVARCHAR(100),
-    LastName NVARCHAR(100)
+    LastLogin DATETIME NULL
 );
 
-INSERT INTO Users (Email, PasswordHash, Role, CreatedAt, LastLogin, FirstName, LastName)
-VALUES ('1', '1', 'Admin', '11:11:11', '11:11:11', '1', '1')
-
-select * from Users
-
+-- Создаем таблицу Categories
 CREATE TABLE Categories (
-    Id INT  IDENTITY (1,1)  PRIMARY KEY ,
+    Id INT IDENTITY(1,1) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL UNIQUE,
     Description NVARCHAR(255) NULL
 );
 
-insert into Categories (Name, Description)
-values ('Tovar1', 'Description1'),
-('Tovar2', 'Description2'),
-('Tovar3', 'Description3'),
-('Tovar4', 'Description4');
-
-delete  from Categories
-select * from Categories
-
-create table ProductStatus(
-Id int identity(1,1) primary key ,
-Name nvarchar(50) not null unique);
-
-insert into ProductStatus([Name]) values
-(N'В наличии'),
-(N'Мало'),
-(N'Нет в наличии');
-
-select * from ProductStatus
-
+-- Создаем таблицу Products
 CREATE TABLE Products (
     Id INT IDENTITY(1,1) PRIMARY KEY,
-    StatusId int not null,
     Name NVARCHAR(200) NOT NULL,
     CategoryId INT NOT NULL,
     Price DECIMAL(18,2) NOT NULL,
     Quantity INT NOT NULL,
+    Status NVARCHAR(50) NOT NULL,
     AddedDate DATETIME NOT NULL DEFAULT GETDATE(),
     Manufacturer NVARCHAR(100) NULL,
-    Article NVARCHAR(50) NULL,
+    Article NVARCHAR(50) NULL UNIQUE,
     Description NVARCHAR(MAX) NULL,
     Weight DECIMAL(10,2) NULL,
     Size NVARCHAR(50) NULL,
     Color NVARCHAR(50) NULL,
     Material NVARCHAR(100) NULL,
-    CONSTRAINT FK_Products_Status FOREIGN KEY (StatusId) REFERENCES ProductStatus(Id),
     CONSTRAINT FK_Products_Category FOREIGN KEY (CategoryId) REFERENCES Categories(Id) ON DELETE CASCADE
 );
 
+-- Добавляем CHECK constraint
+ALTER TABLE Products ADD CONSTRAINT CK_Products_Status 
+CHECK (Status IN (N'В наличии', N'Мало', N'Нет в наличии'));
 
-insert into Products(Name,CategoryId,Price,Quantity,StatusId,AddedDate,Manufacturer,Article, Description, Weight, Size, Color, Material)
-values 
-('name1', 1, 1, 1, 1, '11:11:11', '1', '1', '1', 12345678.99, '1', '1', '1'),
-('name2', 2, 2, 2, 1, '11:11:11', '2', '2', '2', 12345678.99, '2', '2', '2'),
-('name3', 3, 3, 3, 1, '11:11:11', '3', '3', '3', 12345678.99, '3', '3', '3'),
-('name4', 4, 4, 4, 1, '11:11:11', '4', '4', '4', 12345678.99, '4', '4', '4');
+-- Вставляем данные в Categories
+INSERT INTO Categories (Name, Description) VALUES
+    (N'Электроника', N'Смартфоны, ноутбуки и аксессуары'),
+    (N'Одежда', N'Мужская, женская и детская одежда'),
+    (N'Книги', N'Художественная и учебная литература'),
+    (N'Мебель', N'Домашняя и офисная мебель');
 
-delete from Products
-select * from Products
+-- Вставляем данные в Products (все строки с префиксом N)
+INSERT INTO Products (
+    Name, CategoryId, Price, Quantity, Status,
+    AddedDate, Manufacturer, Article, Description,
+    Weight, Size, Color, Material
+) VALUES
+    (N'Смартфон Galaxy', 1, 59999.99, 15, N'В наличии',
+     GETDATE(), N'Samsung', N'SM-G990', N'Флагманский смартфон с отличной камерой',
+     0.2, N'160x75 мм', N'Черный', N'Пластик, стекло'),
+    
+    (N'Ноутбук Aspire', 1, 45999.00, 8, N'В наличии',
+     GETDATE(), N'Acer', N'AC-315', N'Мощный ноутбук для работы и учебы',
+     1.8, N'360x240 мм', N'Серебристый', N'Алюминий'),
+    
+    (N'Джинсы классические', 2, 2999.99, 25, N'В наличии',
+     GETDATE(), N'Levi''s', N'LV-501', N'Классические джинсы прямого кроя',
+     0.6, N'32/32', N'Синий', N'Хлопок 98%'),
+    
+    (N'Футболка хлопковая', 2, 999.00, 50, N'Мало',
+     GETDATE(), N'Nike', N'NK-TSH-01', N'Спортивная футболка из 100% хлопка',
+     0.2, N'M', N'Белый', N'Хлопок'),
+    
+    (N'Война и мир', 3, 450.00, 3, N'Мало',
+     GETDATE(), N'АСТ', N'BOOK-WAR', N'Роман-эпопея Льва Толстого',
+     0.8, N'20x13 см', N'Белый', N'Бумага'),
+    
+    (N'Стул офисный', 4, 4599.00, 0, N'Нет в наличии',
+     GETDATE(), N'IKEA', N'CHAIR-01', N'Эргономичный офисный стул',
+     8.5, N'60x60x120 см', N'Черный', N'Металл, ткань');
 
+-- Проверяем результат
+SELECT * FROM Products;
+SELECT * FROM Categories;

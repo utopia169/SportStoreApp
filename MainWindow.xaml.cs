@@ -9,7 +9,7 @@ namespace SportsStoreApp
 {
     public partial class MainWindow : Window
     {
-        private bbbEntities1 db = new bbbEntities1();
+        private fixxEntities db = new fixxEntities();
 
         private Users currentUser;
         private bool isLoaded;
@@ -52,9 +52,7 @@ namespace SportsStoreApp
                 MessageBox.Show($"Ошибка загрузки товаров: {ex.Message}",
                     "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
         }
- 
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             try 
@@ -115,16 +113,21 @@ namespace SportsStoreApp
                     CategoryId = firstCategory.Id,
                     Price = 0,
                     Quantity = 0,
-                    StatusId = 1,
+                    Status = "В наличии",
                     AddedDate = DateTime.Now
                 };
+                string oldProductArticle = newProduct.Article;
 
-                db.Products.Add(newProduct);
-                db.SaveChanges();
-
-                LoadProducts();
-                MessageBox.Show("Товар успешно добавлен", "Информация",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
+                Edit edit = new Edit(newProduct);
+                edit.ShowDialog();
+                if (!productsAreTheSame(oldProductArticle, newProduct.Article))
+                {
+                    db.Products.Add(newProduct);
+                    db.SaveChanges();
+                    LoadProducts();
+                    MessageBox.Show("Товар успешно добавлен", "Информация",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
             {
@@ -161,7 +164,14 @@ namespace SportsStoreApp
                     "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
+        private bool productsAreTheSame(string articleOfFirstProduct, string articleOfSecondProduct)
+        {
+            if (articleOfFirstProduct != articleOfSecondProduct)
+            {
+                return false;
+            }
+            return true;
+        }
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             try 
@@ -179,13 +189,24 @@ namespace SportsStoreApp
 
                 if (products != null)
                 {
+                    string nameOfCurrentProduct = products.Name;
+                    string oldProductArticle = products.Article;
                     Edit editWindow = new Edit(products);
                     editWindow.ShowDialog();
 
-                    MessageBox.Show($"Редактирование товара: {products.Name}",
-                        "Редактирование", MessageBoxButton.OK, MessageBoxImage.Information);
+                    if (!productsAreTheSame(oldProductArticle, products.Article))
+                    {
+                        MessageBox.Show($"Редактирование товара: {nameOfCurrentProduct}",
+                            "Редактирование", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    LoadProducts();
+                        db.SaveChanges();
+                        LoadProducts();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Ничего не произошло",
+                            "Редактирование", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 }
             }
             catch (Exception ex)

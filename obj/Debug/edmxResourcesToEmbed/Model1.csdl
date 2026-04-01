@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="bbbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="fixxModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Categories">
     <Key>
       <PropertyRef Name="Id" />
@@ -14,11 +14,11 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="StatusId" Type="Int32" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="CategoryId" Type="Int32" Nullable="false" />
     <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Manufacturer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Article" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -28,25 +28,6 @@
     <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Material" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Categories" Relationship="Self.FK_Products_Category" FromRole="Products" ToRole="Categories" />
-    <NavigationProperty Name="ProductStatus" Relationship="Self.FK_Products_Status" FromRole="Products" ToRole="ProductStatus" />
-  </EntityType>
-  <EntityType Name="ProductStatus">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Products" Relationship="Self.FK_Products_Status" FromRole="ProductStatus" ToRole="Products" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -58,8 +39,6 @@
     <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="LastLogin" Type="DateTime" Precision="3" />
-    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_Products_Category">
     <End Role="Categories" Type="Self.Categories" Multiplicity="1">
@@ -75,30 +54,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Products_Status">
-    <End Role="ProductStatus" Type="Self.ProductStatus" Multiplicity="1" />
-    <End Role="Products" Type="Self.Products" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ProductStatus">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Products">
-        <PropertyRef Name="StatusId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="bbbEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="fixxEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Categories" EntityType="Self.Categories" />
     <EntitySet Name="Products" EntityType="Self.Products" />
-    <EntitySet Name="ProductStatus" EntityType="Self.ProductStatus" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Users" EntityType="Self.Users" />
     <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
       <End Role="Categories" EntitySet="Categories" />
-      <End Role="Products" EntitySet="Products" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Products_Status" Association="Self.FK_Products_Status">
-      <End Role="ProductStatus" EntitySet="ProductStatus" />
       <End Role="Products" EntitySet="Products" />
     </AssociationSet>
   </EntityContainer>

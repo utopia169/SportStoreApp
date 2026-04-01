@@ -13,10 +13,10 @@ namespace SportsStoreApp
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class bbbEntities1 : DbContext
+    public partial class fixxEntities : DbContext
     {
-        public bbbEntities1()
-            : base("name=bbbEntities1")
+        public fixxEntities()
+            : base("name=fixxEntities")
         {
         }
     
@@ -27,8 +27,6 @@ namespace SportsStoreApp
     
         public DbSet<Categories> Categories { get; set; }
         public DbSet<Products> Products { get; set; }
-        public DbSet<ProductStatus> ProductStatus { get; set; }
-        public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<Users> Users { get; set; }
     }
 }
